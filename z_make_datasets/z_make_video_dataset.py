@@ -55,7 +55,7 @@ for videopath in videopaths:
     util.makedirs(maskdir)
 
     util.clean_tempfiles()
-    ffmpeg.video2image(videopath, './tmp/video2image/%05d.' + opt.tempimage_type)
+    ffmpeg.video2image(videopath, './tmp/video2image/%05d.' + opt.tempimage_type, opt.fps)
 
     endtime = datetime.datetime.now()
     print(str(video_cnt) + '/' + str(len(videopaths)) + ' ',
