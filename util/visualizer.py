@@ -2,6 +2,8 @@ import numpy as np
 import os
 import ntpath
 import time
+from PIL import Image
+
 from . import util
 from . import html
 import scipy.misc
@@ -43,7 +45,8 @@ class Visualizer():
                     s = StringIO()
                 except:
                     s = BytesIO()
-                scipy.misc.toimage(image_numpy).save(s, format="jpeg")
+                #scipy.misc.toimage(image_numpy).save(s, format="jpeg")
+                Image.fromarray((image_numpy)).save(s, format="jpeg")  #使用PIL实现图片与numpy数组的相互转化
                 # Create an Image object
                 img_sum = self.tf.Summary.Image(encoded_image_string=s.getvalue(), height=image_numpy.shape[0], width=image_numpy.shape[1])
                 # Create a Summary value
